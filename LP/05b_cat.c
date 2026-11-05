@@ -1,23 +1,3 @@
-/*
- * Q5b: C program to emulate the Unix 'cat' command.
- *      Reads and prints the contents of one or more files.
- *
- * COMPILE: gcc -o mycat 05b_cat.c
- * RUN:     ./mycat 08a_file1.txt
- *          ./mycat file1.txt file2.txt   (multiple files)
- *
- * SAMPLE INPUT (08a_file1.txt):
- *   hi
- *   how r u
- *   this
- *
- * EXPECTED OUTPUT:
- *   hi
- *   how r u
- *   this
- *   (followed by a blank line after each file)
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -51,3 +31,20 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open a terminal in the program folder:
+        cd /path/to/LP
+Step 2: Compile the C source code using gcc:
+        gcc 05b_cat.c -o 05b_cat
+Step 3: Run the executable with one or more files as arguments:
+        ./05b_cat 07a_file1.txt
+
+SAMPLE OUTPUT:
+        apple
+        banana
+        orange
+==================================================
+*/

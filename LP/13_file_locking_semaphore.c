@@ -1,20 +1,3 @@
-/*
- * Q13: C program that illustrates file locking using semaphores.
- *      Creates a semaphore, locks it (simulating file lock), sleeps 3 seconds,
- *      then unlocks and removes the semaphore.
- *
- * COMPILE: gcc -o semlok 13_file_locking_semaphore.c
- * RUN:     ./semlok
- *
- * SAMPLE INPUT:
- *   (no input required)
- *
- * EXPECTED OUTPUT:
- *   File locked.
- *   (waits 3 seconds)
- *   File unlocked.
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -83,3 +66,20 @@ int main() {
 
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open a terminal in the program folder:
+        cd /path/to/LP
+Step 2: Compile using gcc:
+        gcc 13_file_locking_semaphore.c -o 13_file_locking_semaphore
+Step 3: Run the executable:
+        ./13_file_locking_semaphore
+
+SAMPLE OUTPUT:
+        File locked.
+        (Program sleeps 3 seconds holding the lock)
+        File unlocked.
+==================================================
+*/

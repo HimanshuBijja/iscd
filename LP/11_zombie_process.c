@@ -1,24 +1,3 @@
-/*
- * Q11: C program to demonstrate a zombie process.
- *      The child exits immediately but the parent sleeps without calling wait(),
- *      causing the child to become a zombie for 10 seconds.
- *
- * COMPILE: gcc -o zombie 11_zombie_process.c
- * RUN:     ./zombie
- *
- * SAMPLE INPUT:
- *   (no input required)
- *
- * EXPECTED OUTPUT:
- *   Child process (PID: 12346) is exiting...
- *   Parent process (PID: 12345) is waiting...
- *   (after 10 seconds)
- *   Parent process (PID: 12345) exiting...
- *
- * NOTE: During the 10-second sleep, run 'ps aux | grep Z' in another terminal
- *       to observe the child process in zombie (Z) state.
- */
-
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -50,3 +29,24 @@ int main() {
 
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open terminal and navigate to the directory:
+        cd /path/to/LP
+Step 2: Compile using gcc:
+        gcc 11_zombie_process.c -o 11_zombie_process
+Step 3: Run the program:
+        ./11_zombie_process &
+Step 4: While the parent sleeps (during the 10 seconds), check the zombie status in terminal:
+        ps -el | grep 'Z'
+        (or: ps aux | grep -i defunct)
+
+SAMPLE OUTPUT:
+        Child process (PID: 12345) is exiting...
+        Parent process (PID: 12344) is waiting...
+        (During 10-second sleep, ps shows 12345 with state 'Z' or '<defunct>')
+        Parent process (PID: 12344) exiting...
+==================================================
+*/

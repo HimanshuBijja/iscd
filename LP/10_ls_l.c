@@ -1,22 +1,3 @@
-/*
- * Q10: C program to emulate the Unix 'ls -l' command.
- *      Displays inode number and filename for each entry in a directory.
- *
- * COMPILE: gcc -o myls 10_ls_l.c
- * RUN:     ./myls /home/user
- *          (or) ./myls .
- *
- * SAMPLE INPUT:
- *   argv[1] = /tmp  (any valid directory)
- *
- * EXPECTED OUTPUT:
- *   (inode)    (filename)
- *    131073 .
- *    131074 ..
- *    131075 file1.txt
- *    131076 file2.txt
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
@@ -48,3 +29,22 @@ int main(int argc, char **argv) {
     
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open a terminal in the program folder:
+        cd /path/to/LP
+Step 2: Compile using gcc:
+        gcc 10_ls_l.c -o 10_ls_l
+Step 3: Run providing directory path as argument:
+        ./10_ls_l .
+
+SAMPLE OUTPUT:
+       1234567 .
+       1234568 ..
+       1234569 01_basic_linux_commands.md
+       1234570 02_lines_between.sh
+       1234571 10_ls_l.c
+==================================================
+*/

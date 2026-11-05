@@ -1,22 +1,3 @@
-/*
- * Q12: C program that illustrates creating, writing to, and reading from a message queue.
- *
- * COMPILE: gcc -o msgq 12_message_queue.c
- * RUN:     ./msgq
- *
- * SAMPLE INPUT (interactive):
- *   Enter message type (positive integer): 1
- *   Enter message text: HelloWorld
- *
- * EXPECTED OUTPUT:
- *   Message Queue Created with ID: 0
- *   Enter message type (positive integer): 1
- *   Enter message text: HelloWorld
- *   Message Sent: HelloWorld
- *   Message Received: HelloWorld
- *   Message Queue Removed
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -51,12 +32,12 @@ int main() {
     }
 
     printf("Enter message text: ");
-    if (scanf("%s", msgsend.mtext) != 1) {
+    if (scanf("%99s", msgsend.mtext) != 1) {
         fprintf(stderr, "Invalid message text input.\n");
         exit(1);
     }
 
-    len = strlen(msgsend.mtext);  // Calculate the length of the message text
+    len = strlen(msgsend.mtext) + 1;  // Include null terminator
     ret = msgsnd(msqid, &msgsend, len, 0);  // Send the message to the queue
     if (ret == -1) {
         perror("msgsnd:");
@@ -73,7 +54,7 @@ int main() {
 
     printf("Message Received: %s\n", msgrecv.mtext);
 
-    // Step 4: Clean up by removing the message queue (optional)
+    // Step 4: Clean up by removing the message queue
     ret = msgctl(msqid, IPC_RMID, NULL);  // Remove the message queue
     if (ret == -1) {
         perror("msgctl:");
@@ -83,3 +64,26 @@ int main() {
 
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open a terminal in the program folder:
+        cd /path/to/LP
+Step 2: Compile using gcc:
+        gcc 12_message_queue.c -o 12_message_queue
+Step 3: Run the executable:
+        ./12_message_queue
+Step 4: Enter message type and text when prompted:
+        Enter message type (positive integer): 1
+        Enter message text: HelloWorld
+
+SAMPLE OUTPUT:
+        Message Queue Created with ID: 0
+        Enter message type (positive integer): 1
+        Enter message text: HelloWorld
+        Message Sent: HelloWorld
+        Message Received: HelloWorld
+        Message Queue Removed
+==================================================
+*/

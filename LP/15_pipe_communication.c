@@ -1,21 +1,3 @@
-/*
- * Q15: C program that illustrates two processes communicating using a PIPE.
- *      Parent generates a random number (0-9), sends it to child via pipe.
- *      Child multiplies it by 4 and sends the result back to parent.
- *
- * COMPILE: gcc -o pipe_comm 15_pipe_communication.c
- * RUN:     ./pipe_comm
- *
- * SAMPLE INPUT:
- *   (no input required; parent generates a random number)
- *
- * EXPECTED OUTPUT (values depend on random number):
- *   Wrote 7          <- parent writes random number to pipe
- *   Received 7       <- child reads from pipe
- *   Wrote 28         <- child writes (7 * 4 = 28) back
- *   Result is 28     <- parent reads and prints the result
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -66,7 +48,6 @@ int main(int argc, char* argv[]) {
         srand(time(NULL));
         int y = rand() % 10;
        
-       
         if (write(p1[1], &y, sizeof(y)) == -1) {
             return 5;
         }
@@ -83,3 +64,21 @@ int main(int argc, char* argv[]) {
    
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open a terminal in the program folder:
+        cd /path/to/LP
+Step 2: Compile using gcc:
+        gcc 15_pipe_communication.c -o 15_pipe_communication
+Step 3: Run the executable:
+        ./15_pipe_communication
+
+SAMPLE OUTPUT:
+        Wrote 7
+        Received 7
+        Wrote 28
+        Result is 28
+==================================================
+*/

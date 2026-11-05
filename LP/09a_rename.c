@@ -1,17 +1,3 @@
-/*
- * Q9a: C program to implement the Unix 'rename' command using the rename() system call.
- *
- * COMPILE: gcc -o myrename 09a_rename.c
- * RUN:     ./myrename oldname.txt newname.txt
- *
- * SAMPLE INPUT:
- *   argv[1] = oldname.txt  (must exist)
- *   argv[2] = newname.txt
- *
- * EXPECTED OUTPUT:
- *   File renamed successfully: oldname.txt -> newname.txt
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -32,3 +18,20 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open a terminal in the program folder:
+        cd /path/to/LP
+Step 2: Compile using gcc:
+        gcc 09a_rename.c -o 09a_rename
+Step 3: Create a test file:
+        touch old.txt
+Step 4: Run the program with old and new names:
+        ./09a_rename old.txt new.txt
+
+SAMPLE OUTPUT:
+        File renamed successfully: old.txt -> new.txt
+==================================================
+*/

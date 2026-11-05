@@ -1,17 +1,3 @@
-/*
- * Q9b: C program to create a hard link using the link() system call.
- *
- * COMPILE: gcc -o mylink 09b_link.c
- * RUN:     ./mylink source.txt hardlink.txt
- *
- * SAMPLE INPUT:
- *   argv[1] = source.txt  (must exist)
- *   argv[2] = hardlink.txt
- *
- * EXPECTED OUTPUT:
- *   Hard link created: hardlink.txt -> source.txt
- */
-
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
@@ -36,3 +22,20 @@ int main(int argc, char *argv[]) {
     printf("Hard link created: %s -> %s\n", link_name, source_file);
     return 0;
 }
+
+/*
+==================================================
+HOW TO EXECUTE (STEP-BY-STEP):
+Step 1: Open a terminal in the program folder:
+        cd /path/to/LP
+Step 2: Compile using gcc:
+        gcc 09b_link.c -o 09b_link
+Step 3: Run with existing source file and new link name:
+        ./09b_link 08a_file1.txt hardlink_file1.txt
+Step 4: Verify inode numbers are identical:
+        ls -i 08a_file1.txt hardlink_file1.txt
+
+SAMPLE OUTPUT:
+        Hard link created: hardlink_file1.txt -> 08a_file1.txt
+==================================================
+*/
